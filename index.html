@@ -462,6 +462,12 @@
             });
         }
 
+        // Tautan suara MP3 asli untuk sapi dan kambing
+        const realSoundUrls = {
+            cow: 'https://raw.githubusercontent.com/SixStringsCoder/matching_game/master/audio/animals/cow.mp3',
+            goat: 'https://raw.githubusercontent.com/SixStringsCoder/matching_game/master/audio/animals/goat.mp3'
+        };
+
         let audioCtx = null;
         function initAudio() {
             if (!audioCtx) {
@@ -472,8 +478,28 @@
             }
         }
 
+        // Fungsi pemicu suara utama dengan sistem fallback
         window.triggerLocalSound = function(type) {
             initAudio();
+            
+            // Coba memutar file audio asli dari tautan luar
+            const audio = new Audio(realSoundUrls[type]);
+            audio.volume = 0.85;
+
+            audio.play()
+                .then(() => {
+                    const soundText = type === 'cow' ? 'Moo asli! 🐄' : 'Mbeee asli! 🐐';
+                    showToast(`🔊 Suara rekaman ${soundText}`, "info");
+                })
+                .catch((err) => {
+                    console.warn("Gagal memuat file audio, beralih ke synthesizer cadangan:", err);
+                    // Jika link gagal dimuat/offline, jalankan generator gelombang audio internal
+                    playFallbackSynthesizedSound(type);
+                });
+        }
+
+        // Generator suara cadangan (jika link audio bermasalah)
+        function playFallbackSynthesizedSound(type) {
             try {
                 if (type === 'cow') {
                     const osc1 = audioCtx.createOscillator();
@@ -509,7 +535,7 @@
                     osc2.start();
                     osc1.stop(audioCtx.currentTime + 1.6);
                     osc2.stop(audioCtx.currentTime + 1.6);
-                    showToast("🔊 Roh Sapi berbunyi: Moo!", "info");
+                    showToast("🔊 Roh Sapi berbunyi: Moo! (Sintetis)", "info");
                 } else {
                     const osc = audioCtx.createOscillator();
                     const tremoloOsc = audioCtx.createOscillator();
@@ -544,10 +570,10 @@
                     osc.start();
                     tremoloOsc.stop(audioCtx.currentTime + 0.9);
                     osc.stop(audioCtx.currentTime + 0.9);
-                    showToast("🔊 Roh Kambing berbunyi: Mbeee!", "info");
+                    showToast("🔊 Roh Kambing berbunyi: Mbeee! (Sintetis)", "info");
                 }
             } catch (e) {
-                console.warn("Audio Context diblokir oleh sandbox browser", e);
+                console.warn("Web Audio API tidak didukung browser ini", e);
             }
         }
 
