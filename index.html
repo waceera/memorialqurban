@@ -75,7 +75,7 @@
                 Panggung Doa & Kenangan Qurban 2026
             </h1>
             <p class="mt-4 text-md md:text-xl text-emerald-800/80 font-medium max-w-2xl mx-auto">
-                Didedikasikan untuk mengenang perjuangan tulus para pahlawan pangan yang telah disembelih pada <strong class="text-emerald-950">27 Mei 2026 pukul 08.00 WIB</strong> menuju Padang Rumput Keabadian.
+                Didedikasikan untuk mengenang perjuangan tulus para pahlawan pangan yang telah disembelih pada <strong class="text-emerald-950">27 Mei 2026 pukul 08.00 WIB</strong> menuju Padang Rumput Keabadian bersama.
             </p>
 
             <!-- Memorial Countdown -->
@@ -140,7 +140,7 @@
                 <div id="pasture-drop-zone" class="absolute inset-0 pointer-events-none"></div>
 
                 <div class="absolute bottom-3 left-4 text-[10px] text-emerald-300/80">
-                    <i class="fa-solid fa-circle-info mr-1"></i> Klik arwah hewan di atas untuk mendengarkan suaranya!
+                    <i class="fa-solid fa-circle-info mr-1"></i> Klik arwah hewan di atas untuk mendengar suaranya!
                 </div>
             </div>
 
@@ -155,24 +155,23 @@
                 </div>
             </div>
 
-            <!-- Identitas Firebase Section -->
+            <!-- Identitas Firebase Section (Simplified) -->
             <div class="bg-white rounded-3xl p-5 shadow-md border border-emerald-100/80 text-xs text-slate-500 space-y-3">
                 <div>
                     <div class="flex items-center gap-2 mb-2 font-semibold text-slate-700">
-                        <div class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                        <span>Identitas Firebase Anonim Anda</span>
+                        <div class="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                        <span>Status Database Pusat (Shared Wall)</span>
                     </div>
-                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100 font-mono break-all text-[10px] select-all cursor-pointer flex justify-between items-center" title="Klik untuk menyalin" onclick="copyUserId()">
-                        <span id="user-id-display">Menghubungkan Autentikasi...</span>
-                        <i class="fa-regular fa-copy text-slate-400 ml-1"></i>
+                    <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100/60 text-[11px] leading-relaxed text-emerald-800">
+                        <i class="fa-solid fa-server mr-1"></i> Terhubung ke database utama <strong>memorialqurban</strong> milik Anda. Semua pengunjung mendoakan pada papan yang sama!
                     </div>
                 </div>
-
-                <div class="pt-2 border-t border-slate-100 flex justify-between items-center">
-                    <span class="text-[10px] text-slate-400">Gunakan Firebase Pribadi Anda untuk Vercel:</span>
-                    <button onclick="openConfigModal()" class="px-2.5 py-1 bg-slate-100 hover:bg-emerald-50 text-slate-600 hover:text-emerald-700 rounded-md font-semibold text-[10px] border border-slate-200 transition">
-                        <i class="fa-solid fa-gear mr-1"></i> Atur Firebase
-                    </button>
+                <div class="pt-2 border-t border-slate-100">
+                    <span class="text-[10px] text-slate-400 block mb-1">ID Anonim Anda:</span>
+                    <div class="bg-slate-50 p-2 rounded-lg border border-slate-150 font-mono text-[9px] break-all select-all cursor-pointer flex justify-between items-center" onclick="copyUserId()">
+                        <span id="user-id-display">Menghubungkan...</span>
+                        <i class="fa-regular fa-copy text-slate-400"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -220,7 +219,7 @@
                             <i class="fa-solid fa-comments text-emerald-700 animate-pulse"></i>
                             <span>Papan Ucapan Syukur (Real-Time Firestore)</span>
                         </h2>
-                        <p class="text-xs text-slate-500 mt-0.5">Saling mendoakan & berbagi kenangan indah secara real-time langsung.</p>
+                        <p class="text-xs text-slate-500 mt-0.5">Semua doa pengunjung tersinkronisasi langsung tanpa refresh.</p>
                     </div>
                     <span id="comment-count-badge" class="px-2.5 py-1 bg-emerald-100 text-emerald-800 font-bold text-xs rounded-full">
                         0 Doa Terkirim
@@ -233,41 +232,6 @@
                         <p class="text-sm font-medium" id="status-text">Menginisialisasi Firebase...</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Custom Config Modal -->
-    <div id="config-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 transition duration-300">
-            <div class="flex justify-between items-start mb-4">
-                <div>
-                    <h3 class="serif-font text-xl font-bold text-slate-900">Konfigurasi Firebase Pribadi</h3>
-                    <p class="text-xs text-slate-500 mt-0.5">Hubungkan ke Firestore & Auth Anda sendiri untuk hosting mandiri di Vercel.</p>
-                </div>
-                <button onclick="closeConfigModal()" class="text-slate-400 hover:text-slate-600 text-lg p-1">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Tempel Config JSON dari Firebase Console</label>
-                    <textarea id="firebase-json-input" rows="7" placeholder='{\n  "apiKey": "AIzaSy...",\n  "authDomain": "projek-anda.firebaseapp.com",\n  "projectId": "projek-anda",\n  "storageBucket": "projek-anda.appspot.com",\n  "messagingSenderId": "1234567890",\n  "appId": "1:123:web:abc"\n}' class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 font-mono text-xs transition"></textarea>
-                </div>
-                <div class="text-[11px] text-slate-500 leading-relaxed bg-amber-50 border border-amber-200 rounded-xl p-3">
-                    <i class="fa-solid fa-triangle-exclamation text-amber-600 mr-1"></i>
-                    <strong>PENTING:</strong> Pastikan Anda telah mengaktifkan <strong>Anonymous Authentication</strong> dan membuat database <strong>Cloud Firestore</strong> di konsol Firebase Anda sebelum menghubungkannya.
-                </div>
-            </div>
-
-            <div class="mt-6 flex gap-3">
-                <button onclick="closeConfigModal()" class="flex-1 py-2.5 border border-slate-200 rounded-xl font-bold text-xs text-slate-600 hover:bg-slate-50 transition">
-                    Batal
-                </button>
-                <button onclick="saveFirebaseConfig()" class="flex-1 py-2.5 bg-emerald-800 hover:bg-emerald-900 text-white rounded-xl font-bold text-xs shadow-md transition">
-                    Simpan & Hubungkan
-                </button>
             </div>
         </div>
     </div>
@@ -295,7 +259,7 @@
                 🌱 Monumen Virtual Pengorbanan Suci © 2026
             </p>
             <p class="text-emerald-400/60 leading-relaxed max-w-md mx-auto">
-                Saling mendoakan & merawat berkah secara real-time. Hubungkan ke Vercel dan Firebase pribadi Anda untuk penggunaan mandiri selamanya.
+                Papan doa bersama ini terhubung ke Cloud Firestore. Terima kasih atas segala doa tulus dan partisipasi Anda.
             </p>
             <div class="pt-2 text-[10px] text-emerald-500">
                 Dibuat dengan dedikasi tinggi &bull; Didukung oleh Rumput Segar Abadi
@@ -316,10 +280,10 @@
         import { getFirestore, doc, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         let db, auth;
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'qurban-memorial-2026';
+        const appId = 'qurban-memorial-2026';
         
-        // Menggunakan Firebase Config aktif milik Anda
-        const defaultFirebaseConfig = {
+        // Kunci konfigurasi database pusat milik Anda
+        const firebaseConfig = {
             apiKey: "AIzaSyB5Y9-cSf6bUvYR69ZBmnEi17ADnzy_qgg",
             authDomain: "memorialqurban.firebaseapp.com",
             projectId: "memorialqurban",
@@ -329,39 +293,16 @@
             measurementId: "G-1WNGKLW0C5"
         };
 
-        function getActiveConfig() {
-            try {
-                if (typeof __firebase_config !== 'undefined') {
-                    return JSON.parse(__firebase_config);
-                }
-                const saved = localStorage.getItem('user_firebase_config');
-                if (saved) return JSON.parse(saved);
-            } catch(e) {}
-            return defaultFirebaseConfig;
-        }
-
         async function bootFirebase() {
-            const config = getActiveConfig();
             const statusText = document.getElementById('status-text');
             const submitBtn = document.getElementById('submit-btn');
 
-            if (config.apiKey === "demo-api-key") {
-                statusText.innerHTML = `
-                    <div class="text-amber-700 bg-amber-50 p-4 rounded-2xl border border-amber-200 text-xs mb-3 font-normal leading-relaxed text-left">
-                        <i class="fa-solid fa-triangle-exclamation mr-1 text-amber-600"></i>
-                        <strong>Mode Demo Aktif:</strong> Website belum terhubung ke database Firebase aktif. Anda dapat menempelkan kunci Firebase Anda melalui tombol <strong>"Atur Firebase"</strong> di sebelah kiri bawah.
-                    </div>
-                `;
-                enableMockDatabaseMode();
-                return;
-            }
-
             try {
-                const app = initializeApp(config);
+                const app = initializeApp(firebaseConfig);
                 auth = getAuth(app);
                 db = getFirestore(app);
 
-                statusText.innerText = "Mengautentikasi akun anonim...";
+                statusText.innerText = "Menghubungkan ke Papan Doa Pusat...";
 
                 await signInAnonymously(auth);
 
@@ -370,21 +311,21 @@
                         const userIdDisplay = document.getElementById('user-id-display');
                         userIdDisplay.innerText = user.uid;
                         
-                        statusText.innerText = "Mengunduh doa real-time...";
+                        statusText.innerText = "Memuat kiriman doa terbaru...";
                         submitBtn.disabled = false;
                         submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i><span>Kirim ke Papan Doa Keabadian</span>`;
                         
                         initFirestoreListener(user.uid);
                     } else {
-                        statusText.innerText = "Gagal memverifikasi identitas pengguna.";
+                        statusText.innerText = "Gagal memverifikasi identitas pengguna anonim.";
                     }
                 });
 
             } catch (err) {
                 console.error("Firebase connection error:", err);
                 statusText.innerHTML = `
-                    <p class="text-rose-600 text-xs font-semibold mb-2">❌ Gagal terhubung ke Firebase Anda</p>
-                    <p class="text-[10px] text-slate-500 max-w-sm mx-auto">Pastikan API Key benar dan Anda telah mengizinkan Read/Write pada Firebase Database rules Anda.</p>
+                    <p class="text-rose-600 text-xs font-semibold mb-2">❌ Gagal terhubung ke Database</p>
+                    <p class="text-[10px] text-slate-500 max-w-sm mx-auto">Pastikan database Firestore Anda sudah dibuat di Firebase Console dan aturan (Security Rules) mengizinkan baca-tulis.</p>
                 `;
             }
         }
@@ -406,28 +347,29 @@
                     });
                 });
 
+                // Urutkan berdasarkan waktu pembuatan dari yang terbaru ke terlama
                 commentsList.sort((a, b) => b.createdAt - a.createdAt);
                 renderTributes(commentsList, currentUid);
 
             }, (error) => {
                 console.error("Firestore Listener error:", error);
-                showToast("⚠️ Firebase error: Cek izin aturan Security Rules Firestore Anda.", "error");
+                showToast("⚠️ Firebase error: Periksa Aturan (Rules) Firestore Anda.", "error");
             });
         }
 
         async function saveTribute(newComment) {
             if (!auth || !auth.currentUser) {
-                showToast("⚠️ Autentikasi belum siap.", "error");
+                showToast("⚠️ Hubungan terputus. Silakan muat ulang halaman.", "error");
                 return;
             }
             try {
                 const commentsCollection = collection(db, 'artifacts', appId, 'public', 'data', 'comments');
                 await addDoc(commentsCollection, newComment);
-                showToast("✨ Doa & ucapan syukur berhasil dikirim secara real-time!");
+                showToast("✨ Doa berhasil dikirim secara real-time ke semua orang!");
                 dropFlower('🌸');
             } catch (err) {
                 console.error("Gagal menyimpan ke Firestore:", err);
-                showToast("❌ Gagal menyimpan doa. Cek hak akses aturan database.", "error");
+                showToast("❌ Gagal menyimpan doa. Periksa Security Rules Firestore Anda.", "error");
             }
         }
 
@@ -440,7 +382,7 @@
             const commentText = document.getElementById('comment-text').value.trim();
             const submitBtn = document.getElementById('submit-btn');
 
-            const currentUid = auth && auth.currentUser ? auth.currentUser.uid : 'DEMO-USER';
+            const currentUid = auth && auth.currentUser ? auth.currentUser.uid : 'UNKNOWN';
 
             const newComment = {
                 authorName: commenterName,
@@ -456,52 +398,8 @@
                 await saveTribute(newComment);
                 form.reset();
                 submitBtn.disabled = false;
-            } else {
-                setTimeout(() => {
-                    saveMockComment(newComment);
-                    form.reset();
-                    submitBtn.disabled = false;
-                    showToast("✨ Disimpan di memori demo lokal!");
-                    dropFlower('🌸');
-                }, 500);
             }
         });
-
-        let mockComments = [];
-        function enableMockDatabaseMode() {
-            const submitBtn = document.getElementById('submit-btn');
-            const userIdDisplay = document.getElementById('user-id-display');
-            
-            userIdDisplay.innerText = "DEMO-OFFLINE-USER";
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i><span>Kirim ke Papan Doa (Demo)</span>`;
-
-            mockComments = [
-                {
-                    id: "mock-1",
-                    authorName: "Keluarga Pak RT",
-                    animalName: "Sapi Limousin Jumbo",
-                    text: "Sapi kami sangat tenang ketika disembelih tepat pukul 08.00 pagi. Semoga pengorbanannya menjadi saksi kebaikan di akhirat kelak.",
-                    userId: "DEMO-USER-1",
-                    createdAt: Date.now() - 3600000
-                },
-                {
-                    id: "mock-2",
-                    authorName: "Zaka & Shifa",
-                    animalName: "Mbek Putih",
-                    text: "Suaranya merdu sekali menenangkan pagi kami sebelum berangkat shalat idul adha. Terima kasih kambing tangguh!",
-                    userId: "DEMO-USER-2",
-                    createdAt: Date.now() - 7200000
-                }
-            ];
-            renderTributes(mockComments, "DEMO-OFFLINE-USER");
-        }
-
-        function saveMockComment(comment) {
-            comment.id = "mock-" + Date.now();
-            mockComments.unshift(comment);
-            renderTributes(mockComments, "DEMO-OFFLINE-USER");
-        }
 
         window.addEventListener('DOMContentLoaded', bootFirebase);
     </script>
@@ -520,7 +418,7 @@
             if (items.length === 0) {
                 container.innerHTML = `
                     <div class="text-center py-12 text-slate-400">
-                        <p class="text-sm font-medium">Belum ada doa tertulis di proyek Firebase Anda. Jadilah yang pertama!</p>
+                        <p class="text-sm font-medium">Belum ada doa tertulis. Jadilah yang pertama mengirimkan berkat!</p>
                     </div>
                 `;
                 return;
@@ -745,41 +643,6 @@
             }, 3500);
         }
 
-        window.openConfigModal = function() {
-            document.getElementById('config-modal').classList.remove('hidden');
-            const current = localStorage.getItem('user_firebase_config');
-            if (current) {
-                document.getElementById('firebase-json-input').value = JSON.stringify(JSON.parse(current), null, 2);
-            }
-        }
-
-        window.closeConfigModal = function() {
-            document.getElementById('config-modal').classList.add('hidden');
-        }
-
-        window.saveFirebaseConfig = function() {
-            const rawVal = document.getElementById('firebase-json-input').value.trim();
-            if (!rawVal) {
-                localStorage.removeItem('user_firebase_config');
-                showToast("Pengaturan Firebase dihapus. Menggunakan default.", "info");
-                setTimeout(() => window.location.reload(), 1000);
-                return;
-            }
-
-            try {
-                const parsed = JSON.parse(rawVal);
-                if (!parsed.apiKey || !parsed.projectId) {
-                    showToast("JSON Config salah. Harus mengandung apiKey dan projectId.", "error");
-                    return;
-                }
-                localStorage.setItem('user_firebase_config', JSON.stringify(parsed));
-                showToast("Kunci Firebase disimpan! Merefresh halaman...");
-                setTimeout(() => window.location.reload(), 1500);
-            } catch (e) {
-                showToast("Format JSON salah. Pastikan format penulisan benar.", "error");
-            }
-        }
-
         window.copyUserId = function() {
             const displaySpan = document.getElementById('user-id-display');
             const textToCopy = displaySpan.innerText;
@@ -793,7 +656,7 @@
             document.execCommand("copy");
             document.body.removeChild(tempInput);
 
-            showToast("📋 ID Firebase Anda disalin ke clipboard!");
+            showToast("📋 ID Anonim Anda disalin ke clipboard!");
         }
 
         function escapeHTML(str) {
