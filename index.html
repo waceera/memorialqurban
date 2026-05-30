@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monumen Virtual Kenangan Sapi & Kambing - 27 Mei 2026</title>
+    <title>Mengenang Idul Fitri 1447 H - Sapi & Kambing</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter & Playfair Display -->
@@ -64,9 +64,9 @@
         
         <div class="max-w-4xl mx-auto text-center relative z-10">
             <div class="inline-flex items-center gap-4 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm text-emerald-800 text-xs font-semibold uppercase tracking-wider mb-6 border border-emerald-200/50">
-                <span>🐄 Sapi Mulia</span>
+                <span>🐄 Sapi</span>
                 <span class="text-emerald-300">•</span>
-                <span>🐐 Kambing Berani</span>
+                <span>🐐 Kambing</span>
                 <span class="text-emerald-300">•</span>
                 <span>🗓️ 27 Mei 2026</span>
             </div>
@@ -124,7 +124,7 @@
             <div class="bg-gradient-to-br from-emerald-800 to-green-950 rounded-3xl p-6 text-white shadow-xl relative overflow-hidden h-[280px] border border-emerald-900">
                 <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
                 
-                <div class="absolute top-2 left-4 text-[10px] tracking-widest text-emerald-300 font-semibold uppercase">Padang Rumput Impian</div>
+                <div class="absolute top-2 left-4 text-[10px] tracking-widest text-emerald-300 font-semibold uppercase">Padang Rumput Surga</div>
                 
                 <div class="absolute bottom-0 left-0 right-0 h-28 bg-emerald-900/60 rounded-t-[50%] transform scale-x-125 translate-y-4"></div>
                 <div class="absolute bottom-0 left-0 right-0 h-20 bg-emerald-950/80 rounded-t-[50%] transform scale-x-110 translate-y-2"></div>
@@ -160,7 +160,7 @@
                 <div>
                     <div class="flex items-center gap-2 mb-2 font-semibold text-slate-700">
                         <div class="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
-                        <span>Status Database Pusat (Shared Wall)</span>
+                        <span>Status Database Pusat</span>
                     </div>
                     <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100/60 text-[11px] leading-relaxed text-emerald-800">
                         <i class="fa-solid fa-server mr-1"></i> Terhubung ke database utama <strong>memorialqurban</strong> milik Anda. Semua pengunjung mendoakan pada papan yang sama!
@@ -217,7 +217,7 @@
                     <div>
                         <h2 class="serif-font text-2xl font-bold text-emerald-950 flex items-center gap-2">
                             <i class="fa-solid fa-comments text-emerald-700 animate-pulse"></i>
-                            <span>Papan Ucapan Syukur (Real-Time Firestore)</span>
+                            <span>Papan Ucapan Syukur</span>
                         </h2>
                         <p class="text-xs text-slate-500 mt-0.5">Semua doa pengunjung tersinkronisasi langsung tanpa refresh.</p>
                     </div>
@@ -259,7 +259,7 @@
                 🌱 Monumen Virtual Pengorbanan Suci © 2026
             </p>
             <p class="text-emerald-400/60 leading-relaxed max-w-md mx-auto">
-                Papan doa bersama ini terhubung ke Cloud Firestore. Terima kasih atas segala doa tulus dan partisipasi Anda.
+                Papan doa bersama ini terhubung ke Database. Terima kasih atas segala doa tulus dan partisipasi Anda.
             </p>
             <div class="pt-2 text-[10px] text-emerald-500">
                 Dibuat dengan dedikasi tinggi &bull; Didukung oleh Rumput Segar Abadi
@@ -353,7 +353,7 @@
 
             }, (error) => {
                 console.error("Firestore Listener error:", error);
-                showToast("⚠️ Firebase error: Periksa Aturan (Rules) Firestore Anda.", "error");
+                showToast("Error", "error");
             });
         }
 
@@ -368,8 +368,8 @@
                 showToast("✨ Doa berhasil dikirim secara real-time ke semua orang!");
                 dropFlower('🌸');
             } catch (err) {
-                console.error("Gagal menyimpan ke Firestore:", err);
-                showToast("❌ Gagal menyimpan doa. Periksa Security Rules Firestore Anda.", "error");
+                console.error("Gagal menyimpan ke Database:", err);
+                showToast("❌ Gagal menyimpan doa.", "error");
             }
         }
 
